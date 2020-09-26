@@ -1,3 +1,9 @@
+#homepage_pic {
+	height: 15em;	
+	display: inline-block;
+	padding: 5em;
+}
+
 div.card {
 	border-radius: 3px;
 	border: 3px solid black;

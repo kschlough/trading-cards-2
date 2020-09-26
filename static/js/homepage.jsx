@@ -1,7 +1,8 @@
 function Homepage() {
   return (
     <React.Fragment>
-      <img src="/static/img/balloonicorn.jpg" />
+      <h1>Welcome to Balloonicorn's Trading Cards Site</h1>
+      <img src="/static/img/balloonicorn.jpg" id="homepage_pic"/>
 
       <p>This is a great site for viewing trading cards.</p>
 
