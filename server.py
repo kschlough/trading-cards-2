@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from model import db, connect_to_db, Card
 
-app = Flask(__name__)
+app = Flask(__name__)  
 
 @app.route("/")
 def show_homepage():
@@ -26,7 +26,8 @@ def get_cards_json():
         cards_list.append({"skill": c.skill, "name": c.name, "imgUrl": c.image_url})
 
 
-    return jsonify({"cards": cards_list})
+    return jsonify({"cards": cards_list}) 
+    # jsonify turns ^ into [{'cards': cards_list}]
 
 @app.route("/add-card", methods=["POST"])
 def add_card():
