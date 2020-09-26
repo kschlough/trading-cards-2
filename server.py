@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from model import db, connect_to_db, Card
+import time
 
 app = Flask(__name__)  
 
@@ -15,6 +16,13 @@ def show_cards():
 
     return render_template("cards.html")
 
+# usually prefix with api, these are api routes 
+# for communicating between the frontend and the backend
+# they're returning json (js object containing data you're asking for) not html 
+    # it's a js object; can think of it like dictionary
+    # has an array of things in it
+    # data is within the cards key
+# this route is created because you need to be able to ask for data from the url
 @app.route("/cards.json")
 def get_cards_json():
     """Return a JSON response with all cards in DB."""
@@ -24,10 +32,14 @@ def get_cards_json():
 
     for c in cards:
         cards_list.append({"skill": c.skill, "name": c.name, "imgUrl": c.image_url})
-
+    # use sleep to see how it loads
+    time.sleep(2)
 
     return jsonify({"cards": cards_list}) 
     # jsonify turns ^ into [{'cards': cards_list}]
+    # jsonify is something that Flask gives you
+        # converts python dictionary or list to valid json object
+            # cards_list is a python list that contains dictionaries
 
 @app.route("/add-card", methods=["POST"])
 def add_card():
